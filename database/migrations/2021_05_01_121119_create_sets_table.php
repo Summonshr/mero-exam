@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestionsTable extends Migration
+class CreateSetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreateQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('sets', function (Blueprint $table) {
             $table->id();
-            $table->string('set_id');
+            $table->integer('set_id');
             $table->string('course');
             $table->string('subject');
-            $table->text('question');
-            $table->text('parent')->nullable();
-            $table->json('right_answer');
-            $table->text('hint')->nullable();
-            $table->text('explanation')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -34,6 +30,6 @@ class CreateQuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('sets');
     }
 }

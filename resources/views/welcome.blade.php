@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    @livewireStyles
-</head>
-<body>
-@yield('body')
-    @livewireScripts
-</body>
-</html>
+<x-guest-layout>
+    @auth
+        <a href="{{route('dashboard')}}">Dashboard</a>
+    @else
+        <a href="{{route('register')}}">Register</a>
+        <a href="{{route('login')}}">Login</a>
+    @endauth
+
+</x-guest-layout>

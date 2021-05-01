@@ -17,6 +17,7 @@ class CreateExamsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('set_id');
+            $table->timestamp('completed_at')->nullable();
             $table->float('score')->nullable();
             $table->softDeletes();
             $table->timestamps();

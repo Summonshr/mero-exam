@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Question;
+use App\Models\Set;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,6 +23,15 @@ class CreateSetsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        Set::query()->delete();
+
+        Question::select('set_id','course','subject')->distinct()->get()->map(function($s){
+            $set = new Set();
+            $set->forceFill($s->toArray());
+            $set->save();
+        });
+
     }
 
     /**

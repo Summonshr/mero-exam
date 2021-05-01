@@ -18,6 +18,8 @@ class SearchExam extends Component
         $exam->user_id = auth()->id();
         $exam->save();
         $exam->populate();
+
+        return redirect()->to($exam->route());
     }
 
     public function render()

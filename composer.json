@@ -12,9 +12,12 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "http-interop/http-factory-guzzle": "^1.0",
         "laravel/framework": "^8.12",
+        "laravel/jetstream": "^2.3",
         "laravel/octane": "^0.4.0",
+        "laravel/sanctum": "^2.10",
         "laravel/scout": "^9.0",
         "laravel/tinker": "^2.5",
+        "livewire/livewire": "^2.4",
         "meilisearch/meilisearch-php": "^0.18.0"
     },
     "require-dev": {

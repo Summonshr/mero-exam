@@ -13,11 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-	    $i = 0 ;
-	    while(true){
-		    \App\Models\Content::factory(100)->create();
-		    echo $i++;
-		    echo PHP_EOL;
-	    }
+	    
     }
 }

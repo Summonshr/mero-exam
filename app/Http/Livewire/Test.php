@@ -15,16 +15,54 @@ class Test extends Component
 
     public $question;
 
-    public function mount(){
+    protected $paginationTheme = 'tailwind';
+
+
+    public function mount()
+    {
         $this->exam_id = request('id');
+    }
+
+    public function checkAnswer($answer_id)
+    {
+        $answer = $this->history->answer ?? [];
+        
+        if($this->question->is_multiple) {
+            array_push($answer, $answer_id);
+        } else {
+            $answer = [ $answer_id ];
+        }
+
+        $this->history->answer = $answer; 
+
+        $this->history->save();
+    }
+
+    public function updatingPage(){
+        $this->page = 5;
     }
 
     public function render()
     {
+        if($this->history && $this->history->answer === null) {
+            $this->history->skipped = true;
+            $this->history->save();
+        } 
 
-        $hhistory = History::with('question.options')->whereExamId($this->exam_id)->paginate(1);
-        $this->question = $hhistory->first()->question;
+        $query = History::with('question.options')->whereExamId($this->exam_id);
+
+        $query->update(['is_current'=>false]);
+
+        $list = $query->paginate(1);
+
+        $this->history  = $list->first();
         
-        return view('livewire.test',['paginator'=>History::with('question.options')->whereExamId($this->exam_id)->paginate(1)]);
+        $this->question = $this->history->question;
+
+        $this->history->is_current = true;
+
+        $this->history->save();
+
+        return view('livewire.test', ['list' => $list]);
     }
 }

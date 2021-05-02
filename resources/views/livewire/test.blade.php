@@ -1,40 +1,26 @@
-<div class="p-4 max-w-2xl">
-    <p>{{$question->question}}</p>
-    <div id="options" class="mt-4">
-        @foreach($question->options as $option)
-            <label class="block flex w-full items-center py-1 my-1">
-                <input name="question" type="radio" value="{{$option->key}}">
-                <p class="pl-2">{{$option->value}}</p>
-            </label>
-        @endforeach
+<div class=" @if($question->parent) max-w-5xl @else max-w-3xl @endif mx-auto sm:px-6 lg:px-8">
+    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+        <div class="flex justify-between @if($question->parent) max-w-5xl @else max-w-3xl @endif">
+            <div class="p-4 max-w-3xl w-full">
+                <div class="flex @if($question->is_compare) justify-around @endif   w-full mt-4">
+                    <p>{!!$question->question!!}</p>
+                </div>
+                <div id="options" class="mt-4">
+                    @foreach($question->options as $option)
+                    <label class="block flex w-full items-center py-1 my-1">
+                        <input name="question{{$question->id}}" wire:click="checkAnswer('{{$option->key}}')" type="{{$question->is_multiple ? 'checkbox' : 'radio'}}" @if(in_array($option->key, $history->answer ?? [])) checked @endif value="{{$option->key}}">
+                        <p class="pl-2">{{$option->value}}</p>
+                    </label>
+                    @endforeach
+                </div>
+                {!! $list->links()!!}
+            </div>
+            @if($question->parent)
+            <div class="max-w-sm p-2 border-l pt-4">
+                <p class="w-full">{{$question->parent}}</p>
+            </div>
+            @endif
+        </div>
     </div>
-    @if ($paginator->hasPages())
-        <nav role="navigation" aria-label="Pagination Navigation" class="flex justify-between">
-            <span>
-                {{-- Previous Page Link --}}
-                @if ($paginator->onFirstPage())
-                    <span class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-default leading-5 rounded-md">
-                        {!! __('pagination.previous') !!}
-                    </span>
-                @else
-                    <button wire:click="previousPage" wire:loading.attr="disabled" rel="prev" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-                        {!! __('pagination.previous') !!}
-                    </button>
-                @endif
-            </span>
-
-            <span>
-                {{-- Next Page Link --}}
-                @if ($paginator->hasMorePages())
-                    <button wire:click="nextPage" wire:loading.attr="disabled" rel="next" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-                        {!! __('pagination.next') !!}
-                    </button>
-                @else
-                    <span class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-default leading-5 rounded-md">
-                        {!! __('pagination.next') !!}
-                    </span>
-                @endif
-            </span>
-        </nav>
-    @endif
+    <span class="hidden">$\frac{1}{4}$</span>
 </div>

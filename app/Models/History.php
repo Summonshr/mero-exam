@@ -10,7 +10,8 @@ class History extends Model
     use HasFactory;
 
     public $casts = [
-        'is_current'=>'bool'
+        'is_current'=>'bool',
+        'answer'=>'array'
     ];
 
     public function question(){

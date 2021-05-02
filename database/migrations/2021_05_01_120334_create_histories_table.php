@@ -16,7 +16,7 @@ class CreateHistoriesTable extends Migration
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
             $table->integer('question_id');
-            $table->integer('answer')->nullable();
+            $table->char('answer')->nullable();
             $table->integer('exam_id');
             $table->boolean('is_current')->default(false);
             $table->boolean('skipped')->default(false);

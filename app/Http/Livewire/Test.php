@@ -25,15 +25,21 @@ class Test extends Component
 
     public function checkAnswer($answer_id)
     {
-        $answer = $this->history->answer ?? [];
+        $answer = collect($this->history->answer ?? []);
         
-        if($this->question->is_multiple) {
-            array_push($answer, $answer_id);
+        if($this->question->multiple) {
+            if($answer->contains($answer_id)) {
+                $answer = $answer->reject(fn($a)=>$a == $answer_id);
+            } else {
+                $answer->push($answer_id);
+            }
         } else {
-            $answer = [ $answer_id ];
+            $answer = collect($answer_id);
         }
 
-        $this->history->answer = $answer; 
+        $answer = $answer->sort()->values();
+
+        $this->history->answer = $answer->toArray(); 
 
         $this->history->save();
     }

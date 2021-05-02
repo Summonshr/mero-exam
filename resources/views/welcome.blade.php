@@ -11,8 +11,13 @@
                         @auth
                             <li><a class="text-sm sm:text-base font-bold p-2 rounded mr-1 md:mr-8 text-indigo-700 hover:text-indigo-100 hover:bg-indigo-700 " href="/dashboard">Dashboard</a></li>
                         @else
-                            <li><a class="text-sm sm:text-base font-bold p-2 rounded mr-1 md:mr-8 text-blue-700 hover:text-blue-100 hover:bg-blue-700 " href="/login">Log In</a></li>
-                            <li><a class="text-sm sm:text-base font-bold p-2 rounded mr-1 md:mr-8 text-green-700 hover:text-green-100 hover:bg-green-700 " href="/register">Register</a></li>
+                            <li>
+                                <form action="/login">
+                                <input type="hidden" name="from" value="home-page">
+                                <x-jet-button>
+                            Sign In
+                            </x-jet-button></form>
+                            </li>
                         @endauth
                     </ul>
                 </div>
@@ -23,14 +28,14 @@
                 <div class="container mx-auto flex flex-wrap justify-between">
                     <div class="p-4 lg:w-1/2 md:p-16 m-auto py-12 text-gray-100 md:max-w-3xl ">
                         <h3 class="mb-4 text-4xl md:text-5xl leading-tight font-bold md:w-full">Don't stress, Do your <span class="text-orange-600">best</span><br> Forget the rest</h3>
-                        <p class="mb-6 text-blue-200 font-semibold leading-normal text-lg">Gremaze.com is continuous evolving websites for practicing multiple choice questions.</p><a class=" mb-6 font-bold bg-green-200 rounded hover:bg-green-900 hover:text-green-100 text-green-700 px-4 py-2 text-xs sm:text-base" href="/sets/GRE">Practice Sets</a><a class=" mb-6 font-bold bg-blue-200 rounded hover:bg-blue-900 hover:text-blue-100 text-blue-700 px-4 py-2 ml-4 text-xs sm:text-base" href="/videos">Videos</a><a class=" mb-6 font-bold bg-red-200 rounded hover:bg-red-900 hover:text-red-100 text-red-700 px-4 py-2 ml-4 text-xs sm:text-base" href="/words">Words</a>
+                        <p class="mb-6 text-blue-200 font-semibold leading-normal text-lg">Gremaze.com is continuous evolving websites for practicing GRE exam.</p>
                     </div>
                     <div class="lg:w-1/2 md:p-16 w-full"><img src="/images/logo.png" height="496" width="364" class="w-full max-w-2xl mx-auto bg-gray-200 p-2" alt=""></div>
                 </div>
             </div>
         </main>
-        <div class="bg-blue-100 p-8 text-gray-800">
-            <h3 class="w-full text-center font-bold">Keep in Touch</h3><a href="mailto:summonshr@gmail.com" class="w-full block cursor-pointer text-center text-purple-800 font-bold">summonshr@gmail.com</a>
+        <div class="bg-blue-100 p-8 text-gray-500">
+            <h3 class="w-full text-center font-bold">Keep in Touch</h3><a href="mailto:summonshr@gmail.com" class="w-full block cursor-pointer text-center text-gray-800 font-bold">summonshr@gmail.com</a>
         </div>
     </div>
 

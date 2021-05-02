@@ -28,18 +28,28 @@
             document.head.appendChild(script);
         })();
 
+        function updateHeight(){
+            if(!document.getElementById('parent')) {
+                return
+            }
+            document.getElementById('parent').style.height = document.getElementById('question').clientHeight + "px"
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
             Livewire.hook('component.initialized', (component) => {
                 console.log('initialized')
+                updateHeight()
             })
             Livewire.hook('element.initialized', (el, component) => {
                 console.log('element initialized')
             })
             Livewire.hook('element.updating', (fromEl, toEl, component) => {
                 MathJax.typeset()
+                updateHeight()
             })
             Livewire.hook('element.updated', (el, component) => {
                 MathJax.typeset()
+                updateHeight()
             })
             Livewire.hook('element.removed', (el, component) => {})
             Livewire.hook('message.sent', (message, component) => {})

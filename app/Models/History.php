@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class History extends Model
 {
     use HasFactory;
+
+    public $casts = [
+        'is_current'=>'bool'
+    ];
+
+    public function question(){
+        return $this->belongsTo(Question::class);
+    }
 }

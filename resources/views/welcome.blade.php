@@ -34,7 +34,7 @@
                             <li>
                                 <form action="/register">
                                     <input type="hidden" name="from" value="home-page">
-                                    <x-jet-button>
+                                    <x-jet-secondary-button >
                                         Start Now
                                     </x-jet-button>
                                 </form>

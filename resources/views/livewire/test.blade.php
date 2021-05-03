@@ -1,7 +1,7 @@
 <div class=" @if($question->parent) max-w-5xl @else max-w-3xl @endif mx-auto sm:px-6 lg:px-8">
     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-        <div class="flex justify-between @if($question->parent) max-w-5xl @else max-w-3xl @endif relative">
-            <div class="p-4 max-w-3xl w-full" id="question">
+        <div class="flex justify-between @if($question->parent || $question->image) max-w-5xl @else max-w-3xl @endif relative">
+            <div class="p-4 max-w-3xl w-full @if($question->parent || $question->image) border-r @endif" id="question">
                 <div class="flex @if($question->is_compare) justify-around @endif   w-full mt-4">
                     <p>{!!$question->question!!}</p>
                 </div>

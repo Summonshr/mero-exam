@@ -13,10 +13,11 @@
                         @else
                             <li>
                                 <form action="/login">
-                                <input type="hidden" name="from" value="home-page">
-                                <x-jet-button>
-                            Sign In
-                            </x-jet-button></form>
+                                    <input type="hidden" name="from" value="home-page">
+                                    <x-jet-button>
+                                    Sign In
+                                    </x-jet-button>
+                                </form>
                             </li>
                         @endauth
                     </ul>
@@ -29,8 +30,18 @@
                     <div class="p-4 lg:w-1/2 md:p-16 m-auto py-12 text-gray-100 md:max-w-3xl ">
                         <h3 class="mb-4 text-4xl md:text-5xl leading-tight font-bold md:w-full">Don't stress, Do your <span class="text-orange-600">best</span><br> Forget the rest</h3>
                         <p class="mb-6 text-blue-200 font-semibold leading-normal text-lg">Gremaze.com is continuous evolving websites for practicing GRE exam.</p>
+                        <ul>
+                            <li>
+                                <form action="/register">
+                                    <input type="hidden" name="from" value="home-page">
+                                    <x-jet-button>
+                                        Start Now
+                                    </x-jet-button>
+                                </form>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="lg:w-1/2 md:p-16 w-full"><img src="/images/logo.png" height="496" width="364" class="w-full max-w-2xl mx-auto bg-gray-200 p-2" alt=""></div>
+                    <div class="lg:w-1/2 md:p-16 w-full"><img src="/images/main.jpeg" height="496" width="364" class="w-full max-w-2xl mx-auto bg-gray-200 p-2" alt=""></div>
                 </div>
             </div>
         </main>
